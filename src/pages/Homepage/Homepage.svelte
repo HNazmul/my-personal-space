@@ -15,15 +15,15 @@
 </svelte:head>
 <main class="text-center  grid place-items-center ">
     <div>
-        <div class="astronaut w-[190px] absolute bottom-20 right-14">
+        <div class="astronaut w-[190px] absolute bottom-20 hidden md:block right-14">
             <img draggable="false" class="w-full h-full" src="images/astronaut.svg" alt="" />
         </div>
         <div>
-            <div class="rocket w-[150px] absolute">
+            <div class="rocket w-[150px] absolute hidden md:block">
                 <img draggable="false" class="w-full h-full" src="images/rocket.svg" alt="" />
             </div>
             <div>
-                <h1 class="text-9xl font-extrabold  bg-clip-text opacity-80 mb-10 text-transparent bg-gradient-to-t to-emerald-200 from-emerald-400 left-48 -z-50 ">Personal Space</h1>
+                <h1 class="lg:text-9xl text-4xl font-extrabold  bg-clip-text opacity-80 mb-10 text-transparent bg-gradient-to-t to-emerald-200 from-emerald-400 left-48 -z-50 ">Personal Space</h1>
                 <h1 class="font-medium text-4xl text-slate-400 ">
                     This is <span class="underline text-emerald-400 decoration-emerald-600 underline-offset-4 font-bold">H. Nazmul's </span> Personal Site.
                 </h1>

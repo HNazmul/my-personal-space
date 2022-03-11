@@ -45,7 +45,7 @@
 </svelte:head>
 <div>
     <div class="login-form w-full">
-        <div class="w-5/12 bg-white p-10 mx-auto mt-10 shadow-lg rounded-md">
+        <div class="md:w-5/12 bg-white p-10 mx-auto mt-10 shadow-lg rounded-md">
             <div class="text-center">
                 <h3 class="text-4xl text-center mb-5 bg-emerald-500 text-white py-2  rounded-md inline-block px-5">Room's Door.</h3>
             </div>

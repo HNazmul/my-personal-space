@@ -32,7 +32,7 @@
     };
 </script>
 
-<button {...$$props} on:click={__onClick} {type} class="{specifiedClass()} rounded  py-2 {_class} px-7">
+<button  on:click={__onClick} {type} class="{specifiedClass()} rounded  py-2 {_class} px-7">
     {#if isSpinner}
         <Spinner size={20} />
     {/if}
