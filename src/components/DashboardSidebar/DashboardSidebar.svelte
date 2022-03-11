@@ -3,7 +3,7 @@
 
     export let _class = "";
     export let items = [{ text: "Notthing", id: "W893Akd" }];
-    let selected = "";
+    let selected = items[0]?.id;
 
     const dispatcher = createEventDispatcher();
 
