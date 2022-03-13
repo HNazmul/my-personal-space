@@ -44,10 +44,10 @@
     <title>Secret Doors</title>
 </svelte:head>
 <div>
-    <div class="login-form w-full">
-        <div class="md:w-5/12 bg-white p-10 mx-auto mt-10 shadow-lg rounded-md">
+    <div class="login-form w-11/12 mx-auto md:w-full">
+        <div class="md:w-7/12 lg:w-5/12 xl:w-4/12 bg-white lg:p-10 p-4 py-10 mx-auto mt-10 shadow-lg rounded-md">
             <div class="text-center">
-                <h3 class="text-4xl text-center mb-5 bg-emerald-500 text-white py-2  rounded-md inline-block px-5">Room's Door.</h3>
+                <h3 class="text-2xl md:text-4xl text-center mb-5 bg-emerald-500 text-white py-2  rounded-md inline-block px-5">Room's Door.</h3>
             </div>
             <form class="" on:submit|preventDefault={handleLoginSubmit}>
                 <div class="mb-5">

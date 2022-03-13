@@ -9,11 +9,13 @@
     export let path = "";
 
     onMount(() => {
-        const { username, password } = JSON.parse(sessionStorage.getItem("user"));
-        console.log(username,password,user)
-        console.log(username === user.username, user.password === password)
+        const { username, password } = JSON.parse(sessionStorage.getItem("user")) || { username: "", password: "" };
+        console.log(username, password, user);
+        console.log(username === user.username, user.password === password);
         if (username === user.username && user.password === password) {
             userStore.setUser({ username, isLoggedIn: true, password: password });
+        } else {
+            userStore.logOutUser()
         }
     });
 </script>
