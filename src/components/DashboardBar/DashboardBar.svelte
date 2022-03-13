@@ -5,7 +5,7 @@
 </script>
 
 <!-- Dashboard Bar HTML -->
-<nav class="w-full bg-white mx-auto border-t-2 lg:border-b-2 border-green-600 fixed md:static z-[999] md:z-0 bottom-0 ">
+<nav class="w-full bg-white mx-auto border-t-2 lg:border-t-0 lg:border-b-2 border-green-600 fixed md:static z-[999] md:z-0 bottom-0 ">
     <div class="bar-content w-7/5 mx-auto ">
         <ul class="w-full flex justify-center">
             <li class:activePath={$location.pathname === "/admin/clients"} class="text-slate-600 " >
