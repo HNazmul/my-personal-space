@@ -30,8 +30,8 @@
 </script>
 
 {#if isSideBarShow}
-    <div transition:fly={{ x: -300, duration: 500 }} class="w-full {_class} fixed left-0 z-50 lg:static shadow-xl lg:z-0">
-        <div class="sitebar bg-white min-h-[40vh] rounded-2xl shadow px-5 py-8">
+    <div transition:fly={{ x: -300, duration: 500 }} class="w-full {_class} fixed left-0 z-50 lg:static  lg:z-0">
+        <div class="sitebar bg-white min-h-[40vh] rounded-2xl overflow-hidden shadow-2xl shadow-slate-400 px-5 py-8">
             <ul class="flex flex-col">
                 {#each items as item}
                     <li

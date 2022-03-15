@@ -5,8 +5,6 @@
     import AddClient from "./TabPages/AddClient/AddClient.svelte";
 
     let selectedTab = {};
-    let uploadedImgURI = "";
-    let spinners = { submitbtn: false };
 
     const onSelectTab = (e) => {
         selectedTab = e.detail;
@@ -28,8 +26,8 @@
 
 <Container _class={"mb-14"}>
     <div class="lg:flex">
-        <div class="md:w-3/12 xl:w-2/12  p-2 ">
-            <DashboardSidebar items={tabData} on:selectTab={onSelectTab} />
+        <div class="md:w-3/12 xl:w-2/12  p-2">
+            <DashboardSidebar _class="max-w-[95%] sm:max-w-[400px] md:left-8" items={tabData} on:selectTab={onSelectTab} />
         </div>
         <div class=" xl:w-10/12 w-full p-2">
             <AddClient />
