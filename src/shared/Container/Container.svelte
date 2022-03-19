@@ -5,6 +5,6 @@
 
 
 
-<div class="container mx-auto {_class}">
+<div class=" sm:container mx-auto {_class}">
     <slot></slot>
 </div>

@@ -4,6 +4,7 @@
     import { userStore } from "./../../store/userStore/UserStore.js";
     import { Link, useLocation } from "svelte-navigator";
     import { onMount } from "svelte";
+    import { navbarRouteData } from "/src/Data/NavbarRouteData.svelte";
 
     //variables
     const location = useLocation();
@@ -12,42 +13,6 @@
     //reactive
     $: activePath = $location.pathname;
     $: console.log(toogle);
-
-    const navbarItems = [
-        {
-            text: "Home",
-            path: "/",
-            children: [],
-        },
-        {
-            text: "Admin",
-            path: "/admin",
-            children: [],
-        },
-        {
-            text: "About Me",
-            path: "https://hnazmul.me",
-            children: [],
-        },
-        {
-            text: "Dropdown",
-            path: "",
-            children: [
-                {
-                    text: "Admin",
-                    path: "/admin",
-                },
-                {
-                    text: "Login",
-                    path: "/login",
-                },
-                {
-                    text: "Home",
-                    path: "/",
-                },
-            ],
-        },
-    ];
 
     onMount(() => {
         try {
@@ -68,9 +33,6 @@
                                 }
                             }
                             console.log(e.target.tagName === "A" && e.target.getAttribute("href"));
-                            if (e.target.tagName === "A" && e.target.getAttribute("href")) {
-                                tooglingItem();
-                            }
                         });
                     });
                 }
@@ -100,13 +62,13 @@
             <h3>Navbar</h3>
         </div>
         <div class="navbar-items-container {toogle.container ? 'active' : ''}">
-            {#each navbarItems as navItem}
+            {#each navbarRouteData as navItem}
                 <div class="navbar-item">
                     <div class="dropdown-wrapper">
                         {#if navItem.children.length > 0}
                             <button class="dropdown-link text-left">{navItem?.text}</button>
                         {:else}
-                            <Link on:click={() => togglingContent("hide")} class="dropdown-link" to="/">{navItem.text}</Link>
+                            <Link on:click={() => togglingContent("hide")} class="dropdown-link" to={navItem.path}>{navItem.text}</Link>
                         {/if}
                         <div class="dropdown-items">
                             {#if navItem.children.length > 0}
@@ -124,13 +86,13 @@
             {#if !$userStore.isLoggedIn}
                 <div class="navbar-item">
                     <div class="dropdown-wrapper">
-                        <Link on:click={()=> togglingContent("hide")} class="dropdown-link" to="/login">Login</Link>
+                        <Link on:click={() => togglingContent("hide")} class="dropdown-link" to="/login">Login</Link>
                     </div>
                 </div>
             {:else}
                 <div class="navbar-item">
                     <div class="dropdown-wrapper">
-                        <Link on:click={()=> togglingContent("hide")} class="dropdown-link" to="/logout">Logout</Link>
+                        <Link on:click={() => togglingContent("hide")} class="dropdown-link" to="/logout">Logout</Link>
                     </div>
                 </div>
             {/if}
