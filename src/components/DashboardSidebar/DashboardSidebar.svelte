@@ -6,7 +6,7 @@
     export let _class = "";
     export let items = [{ text: "Notthing", id: "W893Akd", icon: "" }];
     let selected = items[0]?.id;
-    let isSideBarShow = false;
+    let isSideBarShow = true;
 
     // reactive
     $: if (isSideBarShow && window.innerWidth <= 1024) {
@@ -39,13 +39,13 @@
 {#if isSideBarShow}
     <div transition:fly={{ y: 300, duration: 500 }} class="w-full {_class} fixed bottom-0 left-0 z-[998] lg:static  lg:z-0">
         <div class="sitebar bg-white min-h-[40vh] rounded-t-xl rounded-r-xl md:rounded-2xl overflow-hidden shadow-2xl shadow-slate-400 px-5 py-8">
-            <ul class="flex gap-2 lg:flex-col flex-wrap justify-center pb-8 lg:pb-0">
+            <ul class="flex gap-2 gap-y-4 lg:gap-y-2 lg:flex-col flex-wrap justify-center pb-8 lg:pb-0">
                 {#each items as item}
                     <li
                         on:click={() => __onclick(item)}
                         class="border {selected === item.id
-                            ? 'bg-emerald-500'
-                            : 'lg:bg-slate-100'}  lg:w-full lg:text-left lg:px-3 lg:rounded-md   w-24 p-2 text-center rounded-lg hover:bg-emerald-500 group"
+                            ? 'lg:bg-emerald-500 shadow-lg shadow-gray-300 overflow-hidden lg:shadow-none transform -translate-y-2 lg:-translate-y-0 relative after:absolute after:w-full after:h-5/6 after:rounded-t-full  after:bg-emerald-500 lg:after:w-0 lg:after:h-0 after:bottom-0 after:left-0 after:-z-30 '
+                            : 'lg:bg-slate-100 bg-white'} after:transition-all lg:w-full lg:text-left lg:px-3 lg:rounded-md duration-300 transition-all   w-24 p-2 text-center rounded-lg  lg:hover:bg-emerald-500 group"
                     >
                         <div class="p-3 {selected === item.id ? 'bg-white ' : 'bg-emerald-100 '} rounded-lg group-hover:bg-white lg:hidden">
                             <img src={item.icon} alt="" class="h-10 inline-block" />

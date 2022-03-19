@@ -1,11 +1,13 @@
 <script>
+	import { fly } from 'svelte/transition';
     import SpinnerButton from "/src/shared/Button/SpinnerButton.svelte";
     import DashboardSidebar from "./../../../components/DashboardSidebar/DashboardSidebar.svelte";
     import Container from "/src/shared/Container/Container.svelte";
     import AddClient from "./TabPages/AddClient/AddClient.svelte";
     import { dashboardSidebarData } from "../../../Data/DashboardSitebarData.svelte";
 
-    let selectedTab = {};
+    let selectedTab = dashboardSidebarData[0];
+    $: console.log(selectedTab);
 
     const onSelectTab = (e) => {
         selectedTab = e.detail;
@@ -18,7 +20,7 @@
             <DashboardSidebar _class="max-w-full md:max-w-[400px] md:left-8" items={dashboardSidebarData} on:selectTab={onSelectTab} />
         </div>
         <div class=" xl:w-10/12 w-full p-2">
-            <AddClient />
+            <svelte:component this={selectedTab.component} />
         </div>
     </div>
 </Container>
