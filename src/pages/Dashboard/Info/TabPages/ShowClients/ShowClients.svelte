@@ -19,11 +19,7 @@
     {/each}
 </div>
 
-<div
-    class="add-button w-[45px] h-[45px] rounded-full select-none bg-white fixed bottom-20 right-3 border-2 border-gray-400 shadow-md text-gray-400 active:bg-gray-600 active:text-white shadow-gray-400 grid place-items-center z-50 cursor-pointer hover:shadow-lg transition-all transform hover:scale-110"
->
-    <Icon icon="fluent:apps-add-in-20-filled" class="text-3xl" />
-</div>
+
 
 <style>
 </style>
