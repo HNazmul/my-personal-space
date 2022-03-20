@@ -1,5 +1,6 @@
 <script>
     import Icon from "@iconify/svelte";
+    import TabPageTitle from "/src/components/TabPageTitle/TabPageTitle.svelte";
     import { clientsDetailsData } from "../../../../../Data/ClientsDetailsData.svelte";
     import ClientCard from "/src/components/ClientCard/ClientCard.svelte";
 </script>
@@ -10,12 +11,7 @@
 </svelte:head>
 
 <!-- HTML Markup -->
-<div class="title">
-    <div class="fixed top-0 py-3 bg-white w-full left-0 md:static border-b-2 border-gray-300">
-        <h2 class="text-xl text-center font-medium">Show All Client Details</h2>
-    </div>
-    <div class="pb-10" />
-</div>
+<TabPageTitle title="Show All Client Details"/>
 
 <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
     {#each clientsDetailsData as clientInfo (clientInfo.id)}

@@ -1,4 +1,5 @@
 <script context="module">
+    import InitialDesktopApp from "./../pages/Dashboard/Info/TabPages/InitialDesktopApp/InitialDesktopApp.svelte";
     import ShowClients from "./../pages/Dashboard/Info/TabPages/ShowClients/ShowClients.svelte";
     import AddClient from "./../pages/Dashboard/Info/TabPages/AddClient/AddClient.svelte";
 
@@ -16,9 +17,9 @@
             icon: "/images/icon/add-buyer (2).png",
         },
         {
-            text: "Client",
+            text: "Initial Deskapp",
             id: "all_clie3nt",
-            component: ShowClients,
+            component: InitialDesktopApp,
             icon: "/images/icon/all-buyer.png",
         },
     ];
