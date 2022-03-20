@@ -44,13 +44,13 @@
                     <li
                         on:click={() => __onclick(item)}
                         class="border {selected === item.id
-                            ? 'lg:bg-emerald-500 shadow-lg shadow-gray-300 overflow-hidden lg:shadow-none transform -translate-y-2 lg:-translate-y-0 relative after:absolute after:w-full after:h-5/6 after:rounded-t-full  after:bg-emerald-500 lg:after:w-0 lg:after:h-0 after:bottom-0 after:left-0 after:-z-30 '
+                            ? 'lg:bg-emerald-400 shadow-lg shadow-gray-300 overflow-hidden lg:shadow-none transform -translate-y-2 lg:-translate-y-0 relative after:absolute after:w-full after:h-5/6 after:rounded-t-full  after:bg-emerald-500 lg:after:w-0 lg:after:h-0 after:bottom-0 after:left-0 after:-z-30 '
                             : 'lg:bg-slate-100 bg-white'} after:transition-all lg:w-full lg:text-left lg:px-3 lg:rounded-md duration-300 transition-all   w-24 p-2 text-center rounded-lg  lg:hover:bg-emerald-500 group"
                     >
                         <div class="p-3 {selected === item.id ? 'bg-white ' : 'bg-emerald-100 '} rounded-lg group-hover:bg-white lg:hidden">
                             <img src={item.icon} alt="" class="h-10 inline-block" />
                         </div>
-                        <h6 class="{selected === item.id ? 'text-white' : 'text-emerald-700'}  group-hover:text-white">{item.text}</h6>
+                        <h6 class="{selected === item.id ? 'text-white' : 'text-emerald-700'}  group-hover:text-white cursor-pointer">{item.text}</h6>
                     </li>
                 {/each}
             </ul>

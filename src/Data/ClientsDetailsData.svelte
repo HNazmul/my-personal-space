@@ -1,6 +1,7 @@
 <script context="module">
     export const clientsDetailsData = [
         {
+            id:"580720f7-b5b4-4492-8306-2bb951a5f12b",
             name: "Abdul Barik",
             email: "barik139@gmail.com",
             marketPlaces: [
@@ -9,7 +10,7 @@
                     username: "barik",
                 },
             ],
-            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique officia tempore quaerat voluptas commodi.",
+            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique officia tempore quaerat voluptas commodi.",
             cover: "",
             profile: "",
             socials: [
