@@ -1,6 +1,6 @@
 <script>
     import BorderLabelInput from "/src/shared/Input/BorderLabelInput.svelte";
-    import TabPageTitle from "./../../../../../components/TabPageTitle/TabPageTitle.svelte";
+    import TabPageTitle from "../../components/TabPageTitle/TabPageTitle.svelte";
 
     let name;
 

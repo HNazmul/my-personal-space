@@ -2,9 +2,8 @@
     // @ts-nocheck
     import Icon from "@iconify/svelte";
     import { initialDeskAppData } from "/src/Data/InitialdesktopAppData.js";
-
-    import TabPageTitle from "../../../../../components/TabPageTitle/TabPageTitle.svelte";
     import InitialDesktopAppCard from "/src/components/InitialDesktopAppCard/InitialDesktopAppCard.svelte";
+    import TabPageTitle from "../../components/TabPageTitle/TabPageTitle.svelte";
 </script>
 
 <!-- HTML Markup  -->

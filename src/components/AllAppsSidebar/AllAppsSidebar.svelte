@@ -1,7 +1,5 @@
 <script>
     // @ts-nocheck
-
-    import { clickOutSide } from "./../../Util/UseDirective.js";
     import Icon from "@iconify/svelte";
     import { createEventDispatcher, onMount } from "svelte";
     import { fly } from "svelte/transition";
@@ -9,37 +7,36 @@
     export let _class = "";
     export let items = [{ text: "Notthing", id: "W893Akd", icon: "" }];
     let selected = items[0]?.id;
-    let isSideBarShow = true;
+    let isSideBarShow = false;
+    let windowInnerWidth = window.innerWidth;
     const dispatcher = createEventDispatcher();
 
     // reactive
-    $: if (isSideBarShow && window.innerWidth <= 1024) {
-        document.body.classList.add("mute");
+    $: if (windowInnerWidth <= 1024) {
+        if (isSideBarShow) {
+            console.log("hi");
+            document.body.classList.add("mute");
+        } else {
+            document.body.classList.remove("mute");
+        }
     } else {
-        document.body.classList.remove("mute");
+        isSideBarShow = true;
     }
 
+    // Functions Of components
     const __onclick = (selectedTab) => {
         selected = selectedTab.id;
         dispatcher("selectTab", selectedTab);
     };
 
     onMount(() => {
-        window.addEventListener("resize", sidebarCondition);
+        window.addEventListener("resize", () => (windowInnerWidth = window.innerWidth));
         document.addEventListener("click", (e) => (isSideBarShow = false));
-        sidebarCondition();
+
         return () => {
             document.removeEventListener("click", null);
         };
     });
-
-    const sidebarCondition = () => {
-        if (window.innerWidth >= 1024) {
-            isSideBarShow = true;
-        } else {
-            isSideBarShow = false;
-        }
-    };
 </script>
 
 {#if isSideBarShow}
@@ -64,8 +61,8 @@
     </div>
 {/if}
 <div
-    on:click|stopPropagation={() => (isSideBarShow = isSideBarShow ? false : true)}
-    class="menus add-button w-[45px] h-[45px] rounded-full select-none bg-emerald-100 fixed bottom-6 right-3 border-2 border-green-600  text-green-600 active:bg-gray-600 active:text-white shadow-gray-400 grid place-items-center z-[999] cursor-pointer hover:shadow-lg transition-all "
+    on:click|stopPropagation={() => (isSideBarShow = !isSideBarShow)}
+    class="menus add-button lg:hidden w-[45px] h-[45px] rounded-full select-none bg-emerald-100 fixed bottom-6 right-3 border-2 border-green-600  text-green-600 active:bg-gray-600 active:text-white shadow-gray-400 grid place-items-center z-[999] cursor-pointer hover:shadow-lg transition-all "
 >
     {#if isSideBarShow}
         <Icon icon="line-md:close" inline={true} class="text-3xl" />

@@ -1,7 +1,7 @@
 <script>
     import Icon from "@iconify/svelte";
     import TabPageTitle from "/src/components/TabPageTitle/TabPageTitle.svelte";
-    import { clientsDetailsData } from "../../../../../Data/ClientsDetailsData.svelte";
+    import { clientsDetailsData } from "../../Data/ClientsDetailsData.svelte";
     import ClientCard from "/src/components/ClientCard/ClientCard.svelte";
 </script>
 

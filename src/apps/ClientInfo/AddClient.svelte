@@ -1,5 +1,5 @@
 <script>
-    import SpinnerButton from "./../../../../../shared/Button/SpinnerButton.svelte";
+    import SpinnerButton from "../../shared/Button/SpinnerButton.svelte";
     let uploadedImgURI = "";
     let spinners = { submitbtn: false };
 
