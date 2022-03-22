@@ -1,6 +1,6 @@
 <script>
-import Icon from "@iconify/svelte";
-
+    import Icon from "@iconify/svelte";
+    import { fade } from "svelte/transition";
     import AddInitialDesktopApp from "./../../apps/InitialDesktopApp/AddInitialDesktopApp.svelte";
     export let data = [{ option: "Add Initial desktop app", icon: "/images/icon/all-buyer.png", appComponent: AddInitialDesktopApp }];
 
@@ -12,7 +12,7 @@ import Icon from "@iconify/svelte";
 
 {#if isAppbarShow}
     <div class="fixed w-full h-full top-0 left-0 bg-slate-400 z-20 bg-opacity-60 backdrop-blur-sm grid place-items-center">
-        <div class="w-[280px] h-[420px] bg-white mx-auto rounded-lg shadow-xl p-3 ">
+        <div in:fade class="w-[280px] h-[420px] bg-white mx-auto rounded-lg shadow-xl p-3 ">
             <div class="w-full h-full  overflow-y-auto pr-3">
                 <ul>
                     <li>Lorem ipsum dolor sit amet.</li>
