@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 
-@layer components{
-    .input-primary{
+@layer components {
+    .input-primary {
         @apply border-2 border-emerald-200 block w-full p-2 focus:outline-none focus:shadow-md rounded-lg;
+    }
+
+    .body-mute{
+        @apply relative after:fixed after:z-[994] after:w-full after:h-full after:top-0 after:left-0 after:bg-slate-400 after:bg-opacity-60 after:backdrop-blur-sm overflow-hidden;
     }
 }

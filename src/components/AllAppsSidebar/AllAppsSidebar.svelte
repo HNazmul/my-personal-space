@@ -1,26 +1,33 @@
+<script context="module">
+    // component module
+    export const sidebarStore = writable({ isSideBarShow: false });
+</script>
+
 <script>
     // @ts-nocheck
     import Icon from "@iconify/svelte";
-    import { createEventDispatcher, onMount } from "svelte";
+    import { createEventDispatcher, onDestroy, onMount } from "svelte";
+    import { writable } from "svelte/store";
     import { fly } from "svelte/transition";
+    import { appbarStore } from "../ApplicationBar/ApplicationBar.svelte";
 
     export let _class = "";
     export let items = [{ text: "Notthing", id: "W893Akd", icon: "" }];
     let selected = items[0]?.id;
-    let isSideBarShow = false;
     let windowInnerWidth = window.innerWidth;
     const dispatcher = createEventDispatcher();
 
     // reactive
+    $: console.log($sidebarStore);
     $: if (windowInnerWidth <= 1024) {
-        if (isSideBarShow) {
-            console.log("hi");
-            document.body.classList.add("mute");
+        if ($sidebarStore.isSideBarShow) {
+            document.body.classList.add("body-mute");
         } else {
-            document.body.classList.remove("mute");
+            document.body.classList.remove("body-mute");
+            document.removeEventListener("click", (e) => sidebarStore.update((prev) => ({ ...prev, isSideBarShow: false })));
         }
     } else {
-        isSideBarShow = true;
+        sidebarStore.update((prev) => ({ ...prev, isSideBarShow: true }));
     }
 
     // Functions Of components
@@ -29,19 +36,29 @@
         dispatcher("selectTab", selectedTab);
     };
 
+    const __onShowingSidebar = () => {
+        if ($appbarStore.isAppbarShow) {
+            console.log($appbarStore.isAppbarShow);
+            appbarStore.update((prev) => ({ ...prev, isAppbarShow: false }));
+            return setTimeout(() => {
+                sidebarStore.update((prev) => ({ ...prev, isSideBarShow: !$sidebarStore.isSideBarShow }));
+            }, 1);
+        }
+        sidebarStore.update((prev) => ({ ...prev, isSideBarShow: !$sidebarStore.isSideBarShow }));
+    };
+
     onMount(() => {
         window.addEventListener("resize", () => (windowInnerWidth = window.innerWidth));
-        document.addEventListener("click", (e) => (isSideBarShow = false));
-
-        return () => {
-            document.removeEventListener("click", null);
-        };
+        document.addEventListener("click", () => {
+            if ($appbarStore.isAppbarShow) return;
+            sidebarStore.update((prev) => ({ ...prev, isSideBarShow: false }));
+        });
     });
 </script>
 
-{#if isSideBarShow}
+{#if $sidebarStore.isSideBarShow}
     <div on:click|stopPropagation transition:fly={{ y: 300, duration: 500 }} class="w-full {_class} fixed bottom-0 left-0 z-[998] lg:static  lg:z-0">
-        <div  class="sitebar bg-white min-h-[40vh] rounded-t-xl rounded-r-xl md:rounded-2xl overflow-hidden shadow-2xl shadow-slate-400 px-5 py-8">
+        <div class="sitebar bg-white min-h-[40vh] rounded-t-xl rounded-r-xl md:rounded-2xl overflow-hidden shadow-2xl shadow-slate-400 px-5 py-8">
             <ul class="flex gap-2 gap-y-4 lg:gap-y-2 lg:flex-col flex-wrap justify-center pb-8 lg:pb-0">
                 {#each items as item}
                     <li
@@ -61,10 +78,10 @@
     </div>
 {/if}
 <div
-    on:click|stopPropagation={() => (isSideBarShow = !isSideBarShow)}
+    on:click|stopPropagation={__onShowingSidebar}
     class="menus add-button lg:hidden w-[45px] h-[45px] rounded-full select-none bg-emerald-100 fixed bottom-6 right-3 border-2 border-green-600  text-green-600 active:bg-gray-600 active:text-white shadow-gray-400 grid place-items-center z-[999] cursor-pointer hover:shadow-lg transition-all "
 >
-    {#if isSideBarShow}
+    {#if $sidebarStore.isSideBarShow}
         <Icon icon="line-md:close" inline={true} class="text-3xl" />
     {:else}
         <Icon icon="bi:chevron-double-up" inline={true} class="text-3xl" />

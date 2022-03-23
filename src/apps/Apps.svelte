@@ -5,10 +5,14 @@
     import ApplicationBar from "/src/components/ApplicationBar/ApplicationBar.svelte";
 
     let selectedTab = infoSidebarData[0];
-    $: console.log(selectedTab);
+    let isSidebarShow = false;
 
     const onSelectTab = (e) => {
         selectedTab = e.detail;
+    };
+
+    const _onShowingBar = (e) => {
+        isSidebarShow = false;
     };
 </script>
 
@@ -22,4 +26,4 @@
         </div>
     </div>
 </Container>
-<ApplicationBar />
+<ApplicationBar menuData={selectedTab.menus} on:showingBar={_onShowingBar} />
