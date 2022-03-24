@@ -4,8 +4,6 @@
 
     let name;
 
-    // reactive
-    $: console.log(name);
 
     //functions
     const handleSubmitForm = () => {

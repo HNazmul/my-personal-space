@@ -18,7 +18,6 @@
     const dispatcher = createEventDispatcher();
 
     // reactive
-    $: console.log($sidebarStore);
     $: if (windowInnerWidth <= 1024) {
         if ($sidebarStore.isSideBarShow) {
             document.body.classList.add("body-mute");
@@ -33,6 +32,7 @@
     // Functions Of components
     const __onclick = (selectedTab) => {
         selected = selectedTab.id;
+        sidebarStore.update((prev) => ({ ...prev, isSideBarShow: false }));
         dispatcher("selectTab", selectedTab);
     };
 
