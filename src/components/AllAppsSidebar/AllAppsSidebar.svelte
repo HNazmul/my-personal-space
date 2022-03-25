@@ -23,7 +23,6 @@
             document.body.classList.add("body-mute");
         } else {
             document.body.classList.remove("body-mute");
-            document.removeEventListener("click", (e) => sidebarStore.update((prev) => ({ ...prev, isSideBarShow: false })));
         }
     } else {
         sidebarStore.update((prev) => ({ ...prev, isSideBarShow: true }));
@@ -47,12 +46,9 @@
         sidebarStore.update((prev) => ({ ...prev, isSideBarShow: !$sidebarStore.isSideBarShow }));
     };
 
+    /// LIFE CYCLE METHODS
     onMount(() => {
         window.addEventListener("resize", () => (windowInnerWidth = window.innerWidth));
-        document.addEventListener("click", () => {
-            if ($appbarStore.isAppbarShow) return;
-            sidebarStore.update((prev) => ({ ...prev, isSideBarShow: false }));
-        });
     });
 </script>
 

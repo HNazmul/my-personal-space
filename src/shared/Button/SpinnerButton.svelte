@@ -26,13 +26,15 @@
         } else if (variant === "secondary" && outline) {
             stroke = "stroke-white hover:stroke-slate-600";
             return "border-2 border-slate-600 font-medium hover:font-normal text-slate-600 bg-transparent hover:bg-slate-600 hover:text-white";
+        } else if (variant === "empty") {
+            return "";
         } else {
             return "text-white bg-emerald-600";
         }
     };
 </script>
 
-<button  on:click={__onClick} {type} class="{specifiedClass()} rounded  py-2 {_class} px-7">
+<button on:click={__onClick} {type} class="{specifiedClass()} rounded  py-2 {_class} px-7">
     {#if isSpinner}
         <Spinner size={20} />
     {/if}
